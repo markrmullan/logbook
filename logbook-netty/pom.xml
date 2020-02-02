@@ -6,8 +6,7 @@
         <artifactId>logbook-parent</artifactId>
         <version>2.0.0-SNAPSHOT</version>
     </parent>
-    <artifactId>logbook-okhttp2</artifactId>
-    <name>Logbook: OkHttp2</name>
+    <artifactId>logbook-netty</artifactId>
     <description>HTTP Client interceptor for request and response logging</description>
     <scm>
         <url>https://github.com/zalando/logbook</url>
@@ -20,9 +19,9 @@
             <artifactId>logbook-api</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.squareup.okhttp</groupId>
-            <artifactId>okhttp</artifactId>
-            <version>2.7.5</version>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-all</artifactId>
+            <version>4.1.44.Final</version>
         </dependency>
         <!-- testing -->
         <dependency>
@@ -38,6 +37,37 @@
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-nop</artifactId>
         </dependency>
+
+        <!-- Spring WebFlux -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-webflux</artifactId>
+            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>ch.qos.logback</groupId>
+                    <artifactId>logback-classic</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <!-- Vert.x -->
+        <dependency>
+            <groupId>io.vertx</groupId>
+            <artifactId>vertx-core</artifactId>
+            <version>3.8.5</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- Quarkus -->
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-netty</artifactId>
+            <version>1.2.0.Final</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- TODO remove! -->
         <dependency>
             <groupId>com.github.rest-driver</groupId>
             <artifactId>rest-client-driver</artifactId>
